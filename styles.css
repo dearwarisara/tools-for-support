@@ -86,12 +86,33 @@ a { color: inherit; }
 }
 .hub-title {
   margin: 0;
-  color: var(--blue);
+  color: var(--ink);
   font-family: "DM Sans", sans-serif;
   font-size: clamp(42px, 7vw, 78px);
   font-weight: 800;
   letter-spacing: 0.055em;
   line-height: 1;
+}
+.hero-title-wrap { width: fit-content; max-width: 100%; }
+.hero-underline {
+  display: block;
+  width: 68%;
+  height: 10px;
+  margin: 13px 0 0 16%;
+  background: #16aec4;
+  border-radius: 99px;
+  transform: rotate(0.6deg);
+}
+.hero-description {
+  max-width: 500px;
+  margin: 24px 0 0;
+  padding: 14px 19px;
+  color: #467265;
+  background: #f3fcf8;
+  border: 1.5px solid #a8e3c9;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .frequent-section, .tools-section, .how-it-works { padding-bottom: 92px; }
@@ -223,6 +244,8 @@ a { color: inherit; }
   .status-pill { padding: 7px 9px; font-size: 11px; }
   .hero { padding: 52px 0 46px; }
   .hub-title { font-size: clamp(36px, 12vw, 58px); }
+  .hero-underline { height: 8px; margin-top: 10px; }
+  .hero-description { margin-top: 20px; padding: 12px 15px; font-size: 14px; }
   .tool-grid, .steps-grid { grid-template-columns: 1fr; }
   .tool-card { min-height: 315px; padding: 25px; }
 .frequent-section, .tools-section, .how-it-works { padding-bottom: 65px; }
