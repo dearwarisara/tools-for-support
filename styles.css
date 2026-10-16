@@ -74,8 +74,8 @@ a { color: inherit; }
 }
 .status-dot { width: 7px; height: 7px; background: #36b878; border-radius: 50%; }
 
-.hero { padding: 82px 0 72px; }
-.eyebrow, .section-kicker {
+.hero { padding: 74px 0 68px; }
+.section-kicker {
   margin: 0;
   color: var(--blue);
   font-family: "DM Sans", sans-serif;
@@ -84,16 +84,15 @@ a { color: inherit; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.hero h1 {
-  max-width: 700px;
-  margin: 19px 0 22px;
+.hub-title {
+  margin: 0;
+  color: var(--blue);
+  font-family: "DM Sans", sans-serif;
   font-size: clamp(42px, 7vw, 78px);
   font-weight: 800;
-  letter-spacing: -0.055em;
-  line-height: 1.08;
+  letter-spacing: 0.055em;
+  line-height: 1;
 }
-.hero h1 span { color: var(--blue); }
-.hero-copy { margin: 0; color: var(--muted); font-size: 19px; line-height: 1.75; }
 
 .frequent-section, .tools-section, .how-it-works { padding-bottom: 92px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 25px; }
@@ -222,10 +221,8 @@ a { color: inherit; }
   .page-shell { width: min(100% - 32px, 560px); }
   .site-header { padding-top: 18px; }
   .status-pill { padding: 7px 9px; font-size: 11px; }
-  .hero { padding: 60px 0 55px; }
-  .hero h1 { font-size: clamp(39px, 12vw, 58px); }
-  .hero-copy { font-size: 16px; line-height: 1.7; }
-  .desktop-break { display: none; }
+  .hero { padding: 52px 0 46px; }
+  .hub-title { font-size: clamp(36px, 12vw, 58px); }
   .tool-grid, .steps-grid { grid-template-columns: 1fr; }
   .tool-card { min-height: 315px; padding: 25px; }
 .frequent-section, .tools-section, .how-it-works { padding-bottom: 65px; }
