@@ -88,18 +88,24 @@ a { color: inherit; }
   margin: 0;
   color: var(--ink);
   font-family: "DM Sans", sans-serif;
-  font-size: clamp(42px, 7vw, 78px);
+  font-size: clamp(36px, 5.5vw, 60px);
   font-weight: 800;
-  letter-spacing: 0.055em;
+  letter-spacing: 0.035em;
   line-height: 1;
+}
+.hub-accent {
+  color: transparent;
+  background: linear-gradient(135deg, #486bff 0%, #11a9b9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 .hero-title-wrap { width: fit-content; max-width: 100%; }
 .hero-underline {
   display: block;
-  width: 68%;
-  height: 10px;
-  margin: 13px 0 0 16%;
-  background: #16aec4;
+  width: 56%;
+  height: 8px;
+  margin: 11px 0 0 15%;
+  background: linear-gradient(90deg, #18afc3 0%, #70d0c5 100%);
   border-radius: 99px;
   transform: rotate(0.6deg);
 }
@@ -114,6 +120,7 @@ a { color: inherit; }
   font-size: 16px;
   line-height: 1.7;
 }
+.description-accent { color: #168d8b; font-weight: 700; }
 
 .frequent-section, .tools-section, .how-it-works { padding-bottom: 92px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 25px; }
@@ -243,8 +250,8 @@ a { color: inherit; }
   .site-header { padding-top: 18px; }
   .status-pill { padding: 7px 9px; font-size: 11px; }
   .hero { padding: 52px 0 46px; }
-  .hub-title { font-size: clamp(36px, 12vw, 58px); }
-  .hero-underline { height: 8px; margin-top: 10px; }
+  .hub-title { font-size: clamp(32px, 11vw, 52px); }
+  .hero-underline { height: 7px; margin-top: 9px; }
   .hero-description { margin-top: 20px; padding: 12px 15px; font-size: 14px; }
   .tool-grid, .steps-grid { grid-template-columns: 1fr; }
   .tool-card { min-height: 315px; padding: 25px; }
