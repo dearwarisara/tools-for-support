@@ -4,6 +4,10 @@
 
 - [Doc to Web](https://jjjaydem.github.io/doc2web/) — แปลงไฟล์เอกสารเป็น HTML
 - [PDF Prep Studio](https://dearwarisara.github.io/pdf-prep-studio/) — เตรียม PDF และปกสำหรับ presentations
+- [Photoshop / Photopea](https://www.photopea.com/) — แต่งภาพออนไลน์
+- [Slackemoji](https://slackmojis.com/) — ค้นหา emoji สำหรับ Slack
+- [Convert Case](https://convertcase.net/) — เปลี่ยนรูปแบบตัวอักษร
+- [Viewport](https://takumi0125.github.io/viewportChecker/) — ตรวจสอบการแสดงผลบนขนาดหน้าจอต่าง ๆ
 
 ## เปิดใช้งานในเครื่อง
 

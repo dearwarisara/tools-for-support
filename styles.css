@@ -126,11 +126,19 @@ a { color: inherit; }
 }
 .tool-card-blue::after { background: var(--blue); }
 .tool-card-orange::after { background: var(--orange); }
+.tool-card-green::after { background: #31a873; }
+.tool-card-purple::after { background: #a06ad8; }
+.tool-card-teal::after { background: #2ca5a5; }
+.tool-card-indigo::after { background: #6374d9; }
 .tool-card:hover { transform: translateY(-4px); box-shadow: 0 22px 55px rgba(47, 61, 95, 0.13); }
 .card-topline { display: flex; align-items: center; justify-content: space-between; }
 .tool-icon { display: grid; width: 56px; height: 56px; place-items: center; border-radius: 16px; }
 .tool-card-blue .tool-icon { color: var(--blue); background: #eef1ff; }
 .tool-card-orange .tool-icon { color: var(--orange); background: #fff2ea; }
+.tool-card-green .tool-icon { color: #2a9d6b; background: #eaf8f1; }
+.tool-card-purple .tool-icon { color: #9460ce; background: #f5edfc; }
+.tool-card-teal .tool-icon { color: #258f92; background: #e7f8f7; }
+.tool-card-indigo .tool-icon { color: #5b6bd1; background: #eef0ff; }
 .tool-icon svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.2; }
 .tool-tag { padding: 7px 10px; color: var(--muted); background: var(--surface-soft); border-radius: 7px; font-size: 12px; font-weight: 600; }
 .card-content { position: relative; z-index: 1; margin-top: 35px; }
