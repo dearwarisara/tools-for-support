@@ -1,6 +1,6 @@
 # Support Toolkit
 
-หน้าเว็บรวมเครื่องมือสำหรับทีม Support โดยเริ่มต้นจาก 2 เครื่องมือ:
+หน้าเว็บรวมเครื่องมือและเอกสารสำหรับทีม Support:
 
 - [Doc to Web](https://jjjaydem.github.io/doc2web/) — แปลงไฟล์เอกสารเป็น HTML
 - [PDF Prep Studio](https://dearwarisara.github.io/pdf-prep-studio/) — เตรียม PDF และปกสำหรับ presentations
@@ -8,6 +8,18 @@
 - [Slackemoji](https://slackmojis.com/) — ค้นหา emoji สำหรับ Slack
 - [Convert Case](https://convertcase.net/) — เปลี่ยนรูปแบบตัวอักษร
 - [Viewport](https://takumi0125.github.io/viewportChecker/) — ตรวจสอบการแสดงผลบนขนาดหน้าจอต่าง ๆ
+- [Jarvis](https://jarvis.optiwise.io/wp-login.php) — ระบบภายในสำหรับจัดการงานและข้อมูลของทีม
+- [Time Away](https://timeaway.optiwise.io/) — จัดการและตรวจสอบช่วงเวลาที่ไม่อยู่ของทีม
+
+## เอกสารสำหรับทีม Support
+
+- [Symbol CS Owner](https://www.dropbox.com/scl/fi/j9smjrybb1vnlocwsf89m/Client-Portfolio-14-Sep-2026.xlsx) — Client Portfolio
+- [Support Account](https://www.dropbox.com/scl/fi/jznfqwdkr8ib132v34aqa/SD2025-support-account.xlsx) — SD2025 support account
+- [Ticket Tracking](https://docs.superhuman.com/d/Ticket-Tracking_djFHSGxCo4I/Ticket-Journal_suEtqXoz#_lu1OSNrj) — Ticket Journal
+
+## เพิ่มเครื่องมือของตัวเอง
+
+กดปุ่ม “เพิ่มเครื่องมือ” บนหน้าเว็บเพื่อบันทึกชื่อ ลิงก์ หมวดหมู่ และคำอธิบายของเครื่องมือใหม่ได้ รายการที่เพิ่มจะเก็บไว้ในเบราว์เซอร์ของผู้ใช้คนนั้น เหมาะกับเครื่องมือส่วนตัวหรือเครื่องมือที่ต้องการเก็บไว้ใช้ในเครื่องเดียว
 
 ## เปิดใช้งานในเครื่อง
 

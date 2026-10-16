@@ -48,13 +48,52 @@
           </p>
         </section>
 
+        <section class="add-tool-panel" id="add-tool-panel" aria-labelledby="add-tool-title" hidden>
+          <div class="add-tool-header">
+            <div>
+              <p class="section-kicker">เพิ่มเครื่องมือ</p>
+              <h2 id="add-tool-title">เพิ่มเครื่องมือของคุณ</h2>
+              <p>เครื่องมือที่เพิ่มจะบันทึกไว้ในเบราว์เซอร์ของคุณ</p>
+            </div>
+            <button class="close-add-tool" id="close-add-tool" type="button" aria-label="ปิดฟอร์มเพิ่มเครื่องมือ">×</button>
+          </div>
+          <form id="add-tool-form" novalidate>
+            <div class="form-grid">
+              <label class="form-field">
+                <span>ชื่อเครื่องมือ <b>*</b></span>
+                <input id="tool-name" name="name" required maxlength="80" placeholder="เช่น Internal Helper" />
+              </label>
+              <label class="form-field">
+                <span>ลิงก์เครื่องมือ <b>*</b></span>
+                <input id="tool-url" name="url" type="url" required placeholder="https://example.com" />
+              </label>
+              <label class="form-field">
+                <span>หมวดหมู่</span>
+                <input id="tool-category" name="category" maxlength="40" placeholder="เช่น งานเอกสาร" />
+              </label>
+              <label class="form-field form-field-wide">
+                <span>คำอธิบายสั้น ๆ</span>
+                <textarea id="tool-description" name="description" rows="2" maxlength="160" placeholder="เครื่องมือนี้ใช้สำหรับอะไร"></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="save-tool-button" type="submit">บันทึกเครื่องมือ</button>
+              <button class="cancel-tool-button" id="cancel-add-tool" type="button">ยกเลิก</button>
+            </div>
+            <p class="form-error" id="add-tool-error" role="alert"></p>
+          </form>
+        </section>
+
         <section class="tools-section" aria-labelledby="tools-title">
           <div class="section-heading">
             <div>
               <p class="section-kicker">เครื่องมือทั้งหมด</p>
               <h2 id="tools-title">เลือกเครื่องมือเพื่อเริ่มใช้งาน</h2>
             </div>
-            <span class="tool-count" id="tool-count">6 tools</span>
+            <div class="tool-actions">
+              <span class="tool-count" id="tool-count">8 tools</span>
+              <button class="add-tool-button" id="open-add-tool" type="button">＋ เพิ่มเครื่องมือ</button>
+            </div>
           </div>
 
           <div class="tool-controls">
@@ -71,7 +110,7 @@
                 aria-describedby="search-result"
               />
             </label>
-            <span class="search-result" id="search-result" aria-live="polite">พบ 6 เครื่องมือ</span>
+            <span class="search-result" id="search-result" aria-live="polite">พบ 8 เครื่องมือ</span>
           </div>
 
           <div class="tool-grid">
@@ -198,6 +237,72 @@
                 <span>เปิดใช้งาน</span><span class="arrow" aria-hidden="true">↗</span>
               </a>
             </article>
+
+            <article class="tool-card tool-card-navy" data-tool-id="jarvis">
+              <div class="card-topline">
+                <span class="tool-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" role="img">
+                    <path d="M14 12h20v24H14z" />
+                    <path d="M20 18h8M20 24h8M20 30h5" />
+                  </svg>
+                </span>
+                <span class="tool-tag">ระบบภายใน</span>
+              </div>
+              <div class="card-content">
+                <h3>Jarvis</h3>
+                <p>เข้าสู่ระบบ Jarvis สำหรับจัดการงานและข้อมูลภายในทีม</p>
+              </div>
+              <a class="tool-link" href="https://jarvis.optiwise.io/wp-login.php" target="_blank" rel="noopener noreferrer">
+                <span>เปิดใช้งาน</span><span class="arrow" aria-hidden="true">↗</span>
+              </a>
+            </article>
+
+            <article class="tool-card tool-card-coral" data-tool-id="time-away">
+              <div class="card-topline">
+                <span class="tool-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" role="img">
+                    <circle cx="24" cy="24" r="13" />
+                    <path d="M24 17v8l5 3M18 10l-4 4M30 10l4 4" />
+                  </svg>
+                </span>
+                <span class="tool-tag">เวลาทำงาน</span>
+              </div>
+              <div class="card-content">
+                <h3>Time Away</h3>
+                <p>จัดการและตรวจสอบช่วงเวลาที่ไม่อยู่ของทีมได้สะดวก</p>
+              </div>
+              <a class="tool-link" href="https://timeaway.optiwise.io/" target="_blank" rel="noopener noreferrer">
+                <span>เปิดใช้งาน</span><span class="arrow" aria-hidden="true">↗</span>
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section class="documents-section" aria-labelledby="documents-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">เอกสารสำหรับทีม Support</p>
+              <h2 id="documents-title">เอกสารที่ใช้บ่อย</h2>
+            </div>
+            <span class="tool-count">3 documents</span>
+          </div>
+
+          <div class="document-grid">
+            <a class="document-card document-card-blue" href="https://www.dropbox.com/scl/fi/j9smjrybb1vnlocwsf89m/Client-Portfolio-14-Sep-2026.xlsx" target="_blank" rel="noopener noreferrer">
+              <span class="document-icon" aria-hidden="true">XLS</span>
+              <span class="document-copy"><strong>Symbol CS Owner</strong><small>Client Portfolio</small></span>
+              <span class="document-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="document-card document-card-green" href="https://www.dropbox.com/scl/fi/jznfqwdkr8ib132v34aqa/SD2025-support-account.xlsx" target="_blank" rel="noopener noreferrer">
+              <span class="document-icon" aria-hidden="true">XLS</span>
+              <span class="document-copy"><strong>Support Account</strong><small>SD2025 support account</small></span>
+              <span class="document-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="document-card document-card-purple" href="https://docs.superhuman.com/d/Ticket-Tracking_djFHSGxCo4I/Ticket-Journal_suEtqXoz#_lu1OSNrj" target="_blank" rel="noopener noreferrer">
+              <span class="document-icon" aria-hidden="true">DOC</span>
+              <span class="document-copy"><strong>Ticket Tracking</strong><small>Ticket Journal</small></span>
+              <span class="document-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </section>
 
@@ -205,7 +310,7 @@
 
       <footer class="site-footer">
         <p>Support Toolkit <span>•</span> รวมลิงก์เครื่องมือสำหรับทีม Support</p>
-        <p class="footer-note">อัปเดตล่าสุด: 6 เครื่องมือ</p>
+        <p class="footer-note">อัปเดตล่าสุด: 8 เครื่องมือ • 3 เอกสาร</p>
       </footer>
     </div>
     <script src="script.js" defer></script>
