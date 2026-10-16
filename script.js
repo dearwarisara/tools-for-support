@@ -185,7 +185,7 @@
     if (toolId) recordUsage(toolId);
   });
 
-  openAddTool.addEventListener("click", () => {
+  openAddTool?.addEventListener("click", () => {
     addToolPanel.hidden = false;
     nameInput.focus();
   });

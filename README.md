@@ -18,9 +18,6 @@
 - [Symbol CS Owner](https://www.dropbox.com/scl/fi/j9smjrybb1vnlocwsf89m/Client-Portfolio-14-Sep-2026.xlsx) — Client Portfolio
 - [Support Account](https://www.dropbox.com/scl/fi/jznfqwdkr8ib132v34aqa/SD2025-support-account.xlsx) — SD2025 support account
 
-## เพิ่มเครื่องมือของตัวเอง
-
-กดปุ่ม “เพิ่มเครื่องมือ” บนหน้าเว็บเพื่อบันทึกชื่อ ลิงก์ หมวดหมู่ และคำอธิบายของเครื่องมือใหม่ได้ รายการที่เพิ่มจะเก็บไว้ในเบราว์เซอร์ของผู้ใช้คนนั้น เหมาะกับเครื่องมือส่วนตัวหรือเครื่องมือที่ต้องการเก็บไว้ใช้ในเครื่องเดียว
 
 ## เปิดใช้งานในเครื่อง
 
