@@ -34,17 +34,48 @@
           </p>
         </section>
 
+        <section class="frequent-section" aria-labelledby="frequent-title">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker">ประวัติการใช้งาน</p>
+              <h2 id="frequent-title">เครื่องมือที่ใช้บ่อย</h2>
+            </div>
+            <button class="clear-usage" id="clear-usage" type="button">ล้างประวัติ</button>
+          </div>
+          <div class="frequent-list" id="frequent-tools-list" aria-live="polite"></div>
+          <p class="frequent-empty" id="frequent-empty">
+            เมื่อกดเปิดใช้งานเครื่องมือ รายการที่ใช้บ่อยจะแสดงที่นี่
+          </p>
+        </section>
+
         <section class="tools-section" aria-labelledby="tools-title">
           <div class="section-heading">
             <div>
               <p class="section-kicker">เครื่องมือทั้งหมด</p>
               <h2 id="tools-title">เลือกเครื่องมือเพื่อเริ่มใช้งาน</h2>
             </div>
-            <span class="tool-count">6 tools</span>
+            <span class="tool-count" id="tool-count">6 tools</span>
+          </div>
+
+          <div class="tool-controls">
+            <label class="search-box" for="tool-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5"></circle>
+                <path d="m16 16 4.5 4.5"></path>
+              </svg>
+              <input
+                id="tool-search"
+                type="search"
+                autocomplete="off"
+                placeholder="ค้นหาเครื่องมือ เช่น PDF, emoji, ภาพ..."
+                aria-describedby="search-result"
+              />
+            </label>
+            <span class="search-result" id="search-result" aria-live="polite">พบ 6 เครื่องมือ</span>
           </div>
 
           <div class="tool-grid">
-            <article class="tool-card tool-card-blue">
+            <article class="tool-card tool-card-blue" data-tool-id="doc-to-web">
               <div class="card-topline">
                 <span class="tool-icon" aria-hidden="true">
                   <svg viewBox="0 0 48 48" role="img">
@@ -68,7 +99,7 @@
               </a>
             </article>
 
-            <article class="tool-card tool-card-orange">
+            <article class="tool-card tool-card-orange" data-tool-id="pdf-prep-studio">
               <div class="card-topline">
                 <span class="tool-icon" aria-hidden="true">
                   <svg viewBox="0 0 48 48" role="img">
@@ -92,7 +123,7 @@
               </a>
             </article>
 
-            <article class="tool-card tool-card-green">
+            <article class="tool-card tool-card-green" data-tool-id="photopea">
               <div class="card-topline">
                 <span class="tool-icon" aria-hidden="true">
                   <svg viewBox="0 0 48 48" role="img">
@@ -111,7 +142,7 @@
               </a>
             </article>
 
-            <article class="tool-card tool-card-purple">
+            <article class="tool-card tool-card-purple" data-tool-id="slackemoji">
               <div class="card-topline">
                 <span class="tool-icon" aria-hidden="true">
                   <svg viewBox="0 0 48 48" role="img">
@@ -130,7 +161,7 @@
               </a>
             </article>
 
-            <article class="tool-card tool-card-teal">
+            <article class="tool-card tool-card-teal" data-tool-id="convert-case">
               <div class="card-topline">
                 <span class="tool-icon" aria-hidden="true">
                   <svg viewBox="0 0 48 48" role="img">
@@ -149,7 +180,7 @@
               </a>
             </article>
 
-            <article class="tool-card tool-card-indigo">
+            <article class="tool-card tool-card-indigo" data-tool-id="viewport">
               <div class="card-topline">
                 <span class="tool-icon" aria-hidden="true">
                   <svg viewBox="0 0 48 48" role="img">
@@ -190,5 +221,6 @@
         <p class="footer-note">อัปเดตล่าสุด: 6 เครื่องมือ</p>
       </footer>
     </div>
+    <script src="script.js" defer></script>
   </body>
 </html>
