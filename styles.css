@@ -254,6 +254,8 @@ a { color: inherit; }
 .tool-card-indigo::after { background: #6374d9; }
 .tool-card-navy::after { background: #263c73; }
 .tool-card-coral::after { background: #e47562; }
+.tool-card-resource::after { background: #d49a37; }
+.tool-card-ticket::after { background: #4d75b9; }
 .tool-card-custom::after { background: #6b7d99; }
 .tool-card:hover { transform: translateY(-4px); box-shadow: 0 22px 55px rgba(47, 61, 95, 0.13); }
 .card-topline { display: flex; align-items: center; justify-content: space-between; }
@@ -266,6 +268,8 @@ a { color: inherit; }
 .tool-card-indigo .tool-icon { color: #5b6bd1; background: #eef0ff; }
 .tool-card-navy .tool-icon { color: #3d5d9a; background: #edf2ff; }
 .tool-card-coral .tool-icon { color: #d76a59; background: #fff0ed; }
+.tool-card-resource .tool-icon { color: #ba8126; background: #fff6e6; }
+.tool-card-ticket .tool-icon { color: #4d75b9; background: #edf3ff; }
 .tool-card-custom .tool-icon { color: #65738b; background: #eef2f7; }
 .tool-icon svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.2; }
 .tool-tag { padding: 7px 10px; color: var(--muted); background: var(--surface-soft); border-radius: 7px; font-size: 12px; font-weight: 600; }

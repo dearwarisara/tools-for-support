@@ -10,12 +10,13 @@
 - [Viewport](https://takumi0125.github.io/viewportChecker/) — ตรวจสอบการแสดงผลบนขนาดหน้าจอต่าง ๆ
 - [Jarvis](https://jarvis.optiwise.io/wp-login.php) — ระบบภายในสำหรับจัดการงานและข้อมูลของทีม
 - [Time Away](https://timeaway.optiwise.io/) — จัดการและตรวจสอบช่วงเวลาที่ไม่อยู่ของทีม
+- [Resource Guru](https://app.resourceguruapp.com/hi/optiwise/schedule) — ดูตารางงานและวางแผนการใช้ทรัพยากรของทีม
+- [Ticket Tracking](https://docs.superhuman.com/d/Ticket-Tracking_djFHSGxCo4I/Ticket-Journal_suEtqXoz#_lu1OSNrj) — เปิดดู Ticket Journal และติดตามรายละเอียดของ ticket
 
 ## เอกสารสำหรับทีม Support
 
 - [Symbol CS Owner](https://www.dropbox.com/scl/fi/j9smjrybb1vnlocwsf89m/Client-Portfolio-14-Sep-2026.xlsx) — Client Portfolio
 - [Support Account](https://www.dropbox.com/scl/fi/jznfqwdkr8ib132v34aqa/SD2025-support-account.xlsx) — SD2025 support account
-- [Ticket Tracking](https://docs.superhuman.com/d/Ticket-Tracking_djFHSGxCo4I/Ticket-Journal_suEtqXoz#_lu1OSNrj) — Ticket Journal
 
 ## เพิ่มเครื่องมือของตัวเอง
 
