@@ -7,7 +7,7 @@
 - [Photoshop / Photopea](https://www.photopea.com/) — แต่งภาพออนไลน์
 - [Slackemoji](https://slackmojis.com/) — ค้นหา emoji สำหรับ Slack
 - [Convert Case](https://convertcase.net/) — เปลี่ยนรูปแบบตัวอักษร
-- [Viewport](https://takumi0125.github.io/viewportChecker/) — ตรวจสอบการแสดงผลบนขนาดหน้าจอต่าง ๆ
+- [Viewport](https://getmybrowser.com/) — ตรวจสอบข้อมูล browser และอุปกรณ์
 - [Jarvis](https://jarvis.optiwise.io/wp-login.php) — ระบบภายในสำหรับจัดการงานและข้อมูลของทีม
 - [Time Away](https://timeaway.optiwise.io/) — จัดการและตรวจสอบช่วงเวลาที่ไม่อยู่ของทีม
 - [Resource Guru](https://app.resourceguruapp.com/hi/optiwise/schedule) — ดูตารางงานและวางแผนการใช้ทรัพยากรของทีม
