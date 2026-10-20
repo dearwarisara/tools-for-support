@@ -45,16 +45,10 @@ a { color: inherit; }
 
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand-mark {
-  display: grid;
+  display: block;
   width: 42px;
   height: 42px;
-  place-items: center;
-  color: #fff;
-  background: var(--ink);
-  border-radius: 13px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 21px;
-  font-weight: 700;
+  flex-shrink: 0;
 }
 .brand-name, .brand-subtitle { display: block; line-height: 1.15; }
 .brand-name { font-family: "DM Sans", sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; }
