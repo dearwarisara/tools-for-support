@@ -15,7 +15,6 @@
 
 ## เอกสารสำหรับทีม Support
 
-- [Symbol CS Owner](https://www.dropbox.com/scl/fi/j9smjrybb1vnlocwsf89m/Client-Portfolio-14-Sep-2026.xlsx) — Client Portfolio
 - [Support Account](https://www.dropbox.com/scl/fi/jznfqwdkr8ib132v34aqa/SD2025-support-account.xlsx) — SD2025 support account
 - [Client List](https://client-list.optiwise-3224.chatgpt.site/) — รายชื่อลูกค้า
 
