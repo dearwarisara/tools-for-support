@@ -5,8 +5,15 @@
   const searchResult = document.querySelector("#search-result");
   const toolCount = document.querySelector("#tool-count");
   const toolGrid = document.querySelector(".tool-grid");
-  const frequentList = document.querySelector("#frequent-tools-list");
-  const frequentEmpty = document.querySelector("#frequent-empty");
+  const recentList = document.querySelector("#recent-items");
+  const recentEmpty = document.querySelector("#recent-empty");
+  const documentLinks = [...document.querySelectorAll(".document-card[data-document-id]")];
+  const openedAtFormat = new Intl.DateTimeFormat("th-TH", {
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   const clearUsage = document.querySelector("#clear-usage");
   const addToolPanel = document.querySelector("#add-tool-panel");
   const openAddTool = document.querySelector("#open-add-tool");
@@ -83,6 +90,7 @@
     id: card.dataset.toolId,
     name: card.querySelector("h3")?.textContent.trim() || "เครื่องมือ",
     href: card.querySelector(".tool-link")?.href || "#",
+    kind: "เครื่องมือ",
   });
 
   const createCustomCard = (tool) => `
@@ -106,22 +114,28 @@
     </article>
   `;
 
-  const renderFrequentTools = () => {
+  const renderRecentItems = () => {
     const usage = readUsage();
-    const frequentTools = cards
-      .map((card) => ({ ...getCardData(card), ...usage[card.dataset.toolId] }))
-      .filter((tool) => Number(tool.count) > 0)
-      .sort((a, b) => Number(b.count) - Number(a.count) || Number(b.lastUsed) - Number(a.lastUsed))
+    const documents = documentLinks.map((link) => ({
+      id: link.dataset.documentId,
+      name: link.querySelector("strong")?.textContent.trim() || "เอกสาร",
+      href: link.href,
+      kind: "เอกสาร",
+    }));
+    const recentItems = [...cards.map(getCardData), ...documents]
+      .map((item) => ({ ...item, lastUsed: Number(usage[item.id]?.lastUsed) || 0 }))
+      .filter((item) => item.lastUsed > 0 && !Number.isNaN(new Date(item.lastUsed).getTime()))
+      .sort((a, b) => b.lastUsed - a.lastUsed)
       .slice(0, 3);
 
-    frequentList.innerHTML = frequentTools
+    recentList.innerHTML = recentItems
       .map(
-        (tool, index) => `
-          <a class="frequent-item" href="${escapeHTML(tool.href)}" target="_blank" rel="noopener noreferrer" data-tool-id="${escapeHTML(tool.id)}">
+        (item, index) => `
+          <a class="frequent-item" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer" data-item-id="${escapeHTML(item.id)}">
             <span class="frequent-rank">0${index + 1}</span>
             <span class="frequent-copy">
-              <span class="frequent-name">${escapeHTML(tool.name)}</span>
-              <span class="frequent-count">ใช้ ${tool.count} ครั้ง</span>
+              <span class="frequent-name">${escapeHTML(item.name)}</span>
+              <span class="frequent-count">${item.kind} • ${escapeHTML(openedAtFormat.format(item.lastUsed))}</span>
             </span>
             <span class="frequent-arrow" aria-hidden="true">↗</span>
           </a>
@@ -129,15 +143,15 @@
       )
       .join("");
 
-    frequentEmpty.classList.toggle("is-hidden", frequentTools.length > 0);
+    recentEmpty.classList.toggle("is-hidden", recentItems.length > 0);
   };
 
-  const recordUsage = (toolId) => {
+  const recordUsage = (itemId) => {
     const usage = readUsage();
-    const current = usage[toolId] || { count: 0, lastUsed: 0 };
-    usage[toolId] = { count: Number(current.count) + 1, lastUsed: Date.now() };
+    const current = usage[itemId] || { count: 0, lastUsed: 0 };
+    usage[itemId] = { count: Number(current.count) + 1, lastUsed: Date.now() };
     saveUsage(usage);
-    renderFrequentTools();
+    renderRecentItems();
   };
 
   const filterTools = () => {
@@ -179,11 +193,16 @@
   });
   refreshCards();
 
-  document.addEventListener("click", (event) => {
-    const link = event.target.closest("a.tool-link, a.frequent-item");
-    const toolId = link?.dataset.toolId || link?.closest(".tool-card")?.dataset.toolId;
-    if (toolId) recordUsage(toolId);
-  });
+  const recordOpenedLink = (event) => {
+    if (event.type === "auxclick" && event.button !== 1) return;
+    const link = event.target.closest("a.tool-link, a.document-card, a.frequent-item");
+    const itemId = link?.dataset.itemId
+      || link?.dataset.documentId
+      || link?.closest(".tool-card")?.dataset.toolId;
+    if (itemId) recordUsage(itemId);
+  };
+  document.addEventListener("click", recordOpenedLink);
+  document.addEventListener("auxclick", recordOpenedLink);
 
   openAddTool?.addEventListener("click", () => {
     addToolPanel.hidden = false;
@@ -194,7 +213,7 @@
   searchInput.addEventListener("input", filterTools);
   clearUsage.addEventListener("click", () => {
     saveUsage({});
-    renderFrequentTools();
+    renderRecentItems();
   });
 
   addToolForm.addEventListener("submit", (event) => {
@@ -231,9 +250,9 @@
     refreshCards();
     closeForm();
     filterTools();
-    renderFrequentTools();
+    renderRecentItems();
   });
 
-  renderFrequentTools();
+  renderRecentItems();
   filterTools();
 })();
