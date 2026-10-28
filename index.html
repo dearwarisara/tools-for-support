@@ -10,7 +10,8 @@
     <title>Support Toolkit | เครื่องมือสำหรับทีม Support</title>
     <meta name="theme-color" content="#172033" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=favorites-1" />
+    <script src="theme.js?v=dark-theme-1"></script>
+    <link rel="stylesheet" href="styles.css?v=dark-theme-1" />
   </head>
 
   <body>
@@ -23,7 +24,19 @@
             <span class="brand-subtitle">เครื่องมือของทีม Support</span>
           </span>
         </a>
-        <span class="status-pill"><span class="status-dot"></span>พร้อมใช้งาน</span>
+        <div class="header-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="สลับโหมดสว่างและโหมดมืด" aria-pressed="false" title="เปลี่ยนเป็นโหมดมืด">
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5" />
+            </svg>
+            <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14z" />
+            </svg>
+            <span id="theme-label" class="theme-label">โหมดสว่าง</span>
+          </button>
+          <span class="status-pill" role="status" aria-label="พร้อมใช้งาน"><span class="status-dot" aria-hidden="true"></span><span class="status-label">พร้อมใช้งาน</span></span>
+        </div>
       </header>
 
       <main>
