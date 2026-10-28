@@ -1,13 +1,17 @@
 (() => {
   const usageKey = "support-toolkit-usage";
   const customToolsKey = "support-toolkit-custom-tools";
+  const favoritesKey = "support-toolkit-favorites";
   const searchInput = document.querySelector("#tool-search");
   const searchResult = document.querySelector("#search-result");
   const toolCount = document.querySelector("#tool-count");
   const toolGrid = document.querySelector(".tool-grid");
   const recentList = document.querySelector("#recent-items");
   const recentEmpty = document.querySelector("#recent-empty");
-  const documentLinks = [...document.querySelectorAll(".document-card[data-document-id]")];
+  const documentLinks = [...document.querySelectorAll(".document-link[data-document-id]")];
+  const favoriteList = document.querySelector("#favorite-items");
+  const favoriteEmpty = document.querySelector("#favorite-empty");
+  const favoriteTitle = document.querySelector("#favorites-title");
   const openedAtFormat = new Intl.DateTimeFormat("th-TH", {
     day: "numeric",
     month: "short",
@@ -28,6 +32,7 @@
   let cards = [...document.querySelectorAll(".tool-card[data-tool-id]")];
   let memoryUsage = {};
   let memoryCustomTools = [];
+  let favoriteIds = [];
 
   const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (character) => ({
     "&": "&amp;",
@@ -52,6 +57,26 @@
       localStorage.setItem(usageKey, JSON.stringify(usage));
     } catch {
       // The site still works when browser storage is unavailable.
+    }
+  };
+
+  const readFavoriteIds = () => {
+    try {
+      const storedIds = JSON.parse(localStorage.getItem(favoritesKey) || "[]");
+      return Array.isArray(storedIds)
+        ? [...new Set(storedIds.filter((id) => typeof id === "string"))]
+        : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const saveFavoriteIds = (ids) => {
+    favoriteIds = ids;
+    try {
+      localStorage.setItem(favoritesKey, JSON.stringify(ids));
+    } catch {
+      // Favorites remain usable in this session when storage is unavailable.
     }
   };
 
@@ -93,6 +118,73 @@
     kind: "เครื่องมือ",
   });
 
+  const getAllItems = () => [
+    ...cards.map(getCardData),
+    ...documentLinks.map((link) => ({
+      id: link.dataset.documentId,
+      name: link.querySelector("strong")?.textContent.trim() || "เอกสาร",
+      href: link.href,
+      kind: "เอกสาร",
+    })),
+  ];
+
+  const favoriteButtonMarkup = (item) => {
+    const selected = favoriteIds.includes(item.id);
+    const label = `${selected ? "ยกเลิกติดดาว" : "ติดดาว"} ${item.name}`;
+    return `
+      <button class="favorite-button" type="button" data-favorite-id="${escapeHTML(item.id)}" aria-pressed="${selected}" aria-label="${escapeHTML(label)}" title="${escapeHTML(label)}">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4-5.7-3-5.7 3 1.1-6.4L3 9.7l6.2-.9L12 3z" />
+        </svg>
+      </button>
+    `;
+  };
+
+  const addFavoriteButtons = () => {
+    cards.forEach((card) => {
+      const topline = card.querySelector(".card-topline");
+      if (topline && !topline.querySelector(".favorite-button")) {
+        topline.insertAdjacentHTML("beforeend", favoriteButtonMarkup(getCardData(card)));
+      }
+    });
+    documentLinks.forEach((link) => {
+      const card = link.closest(".document-card");
+      if (card && !card.querySelector(".favorite-button")) {
+        card.insertAdjacentHTML("beforeend", favoriteButtonMarkup({
+          id: link.dataset.documentId,
+          name: link.querySelector("strong")?.textContent.trim() || "เอกสาร",
+        }));
+      }
+    });
+  };
+
+  const renderFavorites = () => {
+    const allItems = new Map(getAllItems().map((item) => [item.id, item]));
+    const favorites = favoriteIds.map((id) => allItems.get(id)).filter(Boolean);
+    favoriteList.innerHTML = favorites.map((item) => `
+      <div class="favorite-item">
+        ${favoriteButtonMarkup(item)}
+        <a class="favorite-link" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer" data-item-id="${escapeHTML(item.id)}">
+          <span class="favorite-copy">
+            <span class="favorite-name">${escapeHTML(item.name)}</span>
+            <span class="favorite-kind">${item.kind}</span>
+          </span>
+          <span class="frequent-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    `).join("");
+    favoriteEmpty.hidden = favorites.length > 0;
+    document.querySelectorAll(".favorite-button").forEach((button) => {
+      const item = allItems.get(button.dataset.favoriteId);
+      if (!item) return;
+      const selected = favoriteIds.includes(item.id);
+      const label = `${selected ? "ยกเลิกติดดาว" : "ติดดาว"} ${item.name}`;
+      button.setAttribute("aria-pressed", String(selected));
+      button.setAttribute("aria-label", label);
+      button.title = label;
+    });
+  };
+
   const createCustomCard = (tool) => `
     <article class="tool-card tool-card-custom" data-tool-id="${escapeHTML(tool.id)}">
       <div class="card-topline">
@@ -116,13 +208,7 @@
 
   const renderRecentItems = () => {
     const usage = readUsage();
-    const documents = documentLinks.map((link) => ({
-      id: link.dataset.documentId,
-      name: link.querySelector("strong")?.textContent.trim() || "เอกสาร",
-      href: link.href,
-      kind: "เอกสาร",
-    }));
-    const recentItems = [...cards.map(getCardData), ...documents]
+    const recentItems = getAllItems()
       .map((item) => ({ ...item, lastUsed: Number(usage[item.id]?.lastUsed) || 0 }))
       .filter((item) => item.lastUsed > 0 && !Number.isNaN(new Date(item.lastUsed).getTime()))
       .sort((a, b) => b.lastUsed - a.lastUsed)
@@ -192,10 +278,32 @@
     }
   });
   refreshCards();
+  favoriteIds = readFavoriteIds();
+  addFavoriteButtons();
+  renderFavorites();
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("button.favorite-button");
+    if (!button) return;
+    event.preventDefault();
+    const itemId = button.dataset.favoriteId;
+    if (!getAllItems().some((item) => item.id === itemId)) return;
+    const wasInFavorites = favoriteList.contains(button);
+    const focusIndex = [...favoriteList.querySelectorAll(".favorite-button")].indexOf(button);
+    saveFavoriteIds(favoriteIds.includes(itemId)
+      ? favoriteIds.filter((id) => id !== itemId)
+      : [itemId, ...favoriteIds]);
+    renderFavorites();
+    if (wasInFavorites) {
+      const remainingButtons = [...favoriteList.querySelectorAll(".favorite-button")];
+      const nextFocus = remainingButtons[Math.min(focusIndex, remainingButtons.length - 1)] || favoriteTitle;
+      nextFocus.focus();
+    }
+  });
 
   const recordOpenedLink = (event) => {
     if (event.type === "auxclick" && event.button !== 1) return;
-    const link = event.target.closest("a.tool-link, a.document-card, a.frequent-item");
+    const link = event.target.closest("a.tool-link, a.document-link, a.frequent-item, a.favorite-link");
     const itemId = link?.dataset.itemId
       || link?.dataset.documentId
       || link?.closest(".tool-card")?.dataset.toolId;
@@ -248,6 +356,8 @@
     saveCustomTools([tool, ...readCustomTools()]);
     toolGrid.insertAdjacentHTML("beforeend", createCustomCard(tool));
     refreshCards();
+    addFavoriteButtons();
+    renderFavorites();
     closeForm();
     filterTools();
     renderRecentItems();

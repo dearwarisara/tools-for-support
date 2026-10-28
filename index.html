@@ -10,7 +10,7 @@
     <title>Support Toolkit | เครื่องมือสำหรับทีม Support</title>
     <meta name="theme-color" content="#172033" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=favorites-1" />
   </head>
 
   <body>
@@ -33,6 +33,19 @@
           </div>
           <p class="hero-description">
             รวมเครื่องมือสำคัญของทีม <span class="description-accent">Support</span> ให้ค้นหาและเริ่มใช้งานได้ในที่เดียว
+          </p>
+        </section>
+
+        <section class="favorites-section" aria-labelledby="favorites-title">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker">ทางลัดของคุณ</p>
+              <h2 id="favorites-title" tabindex="-1">รายการโปรด</h2>
+            </div>
+          </div>
+          <div class="favorite-list" id="favorite-items" aria-live="polite"></div>
+          <p class="favorite-empty" id="favorite-empty">
+            กดดาวที่เครื่องมือหรือเอกสาร เพื่อเก็บไว้เปิดใช้งานที่นี่
           </p>
         </section>
 
@@ -366,16 +379,20 @@
           </div>
 
           <div class="document-grid">
-            <a class="document-card document-card-green" data-document-id="document-support-account" href="https://www.dropbox.com/scl/fi/jznfqwdkr8ib132v34aqa/SD2025-support-account.xlsx" target="_blank" rel="noopener noreferrer">
-              <span class="document-icon" aria-hidden="true">XLS</span>
-              <span class="document-copy"><strong>Support Account</strong><small>SD2025 support account</small></span>
-              <span class="document-arrow" aria-hidden="true">↗</span>
-            </a>
-            <a class="document-card document-card-purple" data-document-id="document-client-list" href="https://client-list.optiwise-3224.chatgpt.site/" target="_blank" rel="noopener noreferrer">
-              <span class="document-icon" aria-hidden="true">WEB</span>
-              <span class="document-copy"><strong>Client List</strong><small>รายชื่อลูกค้า</small></span>
-              <span class="document-arrow" aria-hidden="true">↗</span>
-            </a>
+            <div class="document-card document-card-green">
+              <a class="document-link" data-document-id="document-support-account" href="https://www.dropbox.com/scl/fi/jznfqwdkr8ib132v34aqa/SD2025-support-account.xlsx" target="_blank" rel="noopener noreferrer">
+                <span class="document-icon" aria-hidden="true">XLS</span>
+                <span class="document-copy"><strong>Support Account</strong><small>SD2025 support account</small></span>
+                <span class="document-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="document-card document-card-purple">
+              <a class="document-link" data-document-id="document-client-list" href="https://client-list.optiwise-3224.chatgpt.site/" target="_blank" rel="noopener noreferrer">
+                <span class="document-icon" aria-hidden="true">WEB</span>
+                <span class="document-copy"><strong>Client List</strong><small>รายชื่อลูกค้า</small></span>
+                <span class="document-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -386,6 +403,6 @@
         <p class="footer-note">อัปเดตล่าสุด: 12 เครื่องมือ • 2 เอกสาร</p>
       </footer>
     </div>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=favorites-1" defer></script>
   </body>
 </html>
