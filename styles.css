@@ -22,9 +22,9 @@
   --ink: #f4f7fd;
   --muted: #cbd7e8;
   --muted-light: #bac8dc;
-  --line: #526580;
-  --surface: #2d3e56;
-  --surface-soft: #3a4d68;
+  --line: #495c76;
+  --surface: #26364c;
+  --surface-soft: #33445f;
   --blue: #a8b7ff;
   --blue-dark: #c3cfff;
   --orange: #ffb07d;
@@ -374,8 +374,8 @@ a { color: inherit; }
 :root[data-theme="dark"] .clear-usage:hover { border-color: #95a8c3; }
 :root[data-theme="dark"] .tool-card:hover { box-shadow: 0 22px 55px rgba(0, 0, 0, 0.3); }
 :root[data-theme="dark"] .favorites-section .section-kicker { color: #efc76d; }
-:root[data-theme="dark"] .favorite-item { background: #3d3c30; border-color: #8c7b4c; }
-:root[data-theme="dark"] .favorite-button { color: #d2dcef; background: #35465f; border-color: #70839f; }
+:root[data-theme="dark"] .favorite-item { background: #36362c; border-color: #8c7b4c; }
+:root[data-theme="dark"] .favorite-button { color: #d2dcef; background: #2e3f57; border-color: #70839f; }
 :root[data-theme="dark"] .favorite-button:hover { color: #ffdf97; background: #55482a; border-color: #d2ad5a; }
 :root[data-theme="dark"] .favorite-button[aria-pressed="true"] { color: #ffdf97; background: #655022; border-color: #c7a04b; }
 :root[data-theme="dark"] .favorite-button[aria-pressed="true"] svg { fill: #ffe39b; }
