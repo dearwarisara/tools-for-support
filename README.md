@@ -15,7 +15,7 @@
 - [Ticket Overwatch](https://ticket-overwatch.optiwise.io/) — ติดตาม ticket ของทีม Support
 - [Financial Highlights/ Major Shareholders](https://www.dropbox.com/work/09%20Support/Program/Folio-IR) — เครื่องมืออัปเดตข้อมูล Financial Highlights ผ่าน Dropbox
 - [HTC Journey](https://jintana03.github.io/htc-journey/) — เครื่องมือ HTC Journey สำหรับทีม Support
-- [Webcast Agenda](https://www.dropbox.com/work/09%20Support/Program/skill-webcast-agenda) — โฟลเดอร์เครื่องมือ Webcast Agenda บน Dropbox
+- [Webcast Agenda](https://www.dropbox.com/work/09%20Support/Program/skill-webcast-agenda) — Skill Codex สำหรับการทำ Webcast (Sync Slide, Mark Agenda, Subtitle ETC.)
 
 ## เอกสารสำหรับทีม Support
 
