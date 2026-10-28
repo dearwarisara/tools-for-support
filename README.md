@@ -13,8 +13,9 @@
 - [Resource Guru](https://app.resourceguruapp.com/hi/optiwise/schedule) — ดูตารางงานและวางแผนการใช้ทรัพยากรของทีม
 - [Ticket Tracking](https://docs.superhuman.com/d/Ticket-Tracking_djFHSGxCo4I/Ticket-Journal_suEtqXoz#_lu1OSNrj) — เปิดดู Ticket Journal และติดตามรายละเอียดของ ticket
 - [Ticket Overwatch](https://ticket-overwatch.optiwise.io/) — ติดตาม ticket ของทีม Support
-- [Financial Highlights/ Major Shareholders](https://www.dropbox.com/work/09%20Support/Program) — เครื่องมืออัปเดตข้อมูล Financial Highlights ผ่าน Dropbox
+- [Financial Highlights/ Major Shareholders](https://www.dropbox.com/work/09%20Support/Program/Folio-IR) — เครื่องมืออัปเดตข้อมูล Financial Highlights ผ่าน Dropbox
 - [HTC Journey](https://jintana03.github.io/htc-journey/) — เครื่องมือ HTC Journey สำหรับทีม Support
+- [Webcast Agenda](https://www.dropbox.com/work/09%20Support/Program/skill-webcast-agenda) — โฟลเดอร์เครื่องมือ Webcast Agenda บน Dropbox
 
 ## เอกสารสำหรับทีม Support
 
