@@ -193,6 +193,11 @@ a { color: inherit; }
 .favorite-copy { flex: 1; min-width: 0; }
 .favorite-name { display: block; color: var(--ink); font-size: 15px; font-weight: 700; overflow-wrap: anywhere; }
 .favorite-kind { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+.shortcut-group { flex: 1; min-width: 0; }
+.shortcut-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.shortcut-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 7px 10px; color: var(--ink); background: var(--surface-soft); border: 1px solid var(--line); border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none; }
+.shortcut-action:hover { border-color: var(--blue); }
+.shortcut-action:focus-visible { outline: 3px solid rgba(77, 108, 255, 0.45); outline-offset: 3px; }
 .favorite-button { position: relative; z-index: 1; display: grid; width: 40px; height: 40px; flex: none; place-items: center; padding: 8px; color: #778399; background: #fff; border: 1px solid #dce2eb; border-radius: 11px; cursor: pointer; transition: color 180ms ease, border-color 180ms ease, background 180ms ease; }
 .favorite-button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
 .favorite-button:hover { color: #946008; background: #fff9e9; border-color: #e6c779; }
@@ -331,6 +336,11 @@ a { color: inherit; }
 .arrow { font-family: "DM Sans", sans-serif; font-size: 24px; font-weight: 400; transition: transform 180ms ease; }
 .tool-link:hover .arrow { transform: translate(3px, -3px); }
 .tool-link:focus-visible, .brand:focus-visible { outline: 3px solid rgba(77, 108, 255, 0.35); outline-offset: 5px; border-radius: 6px; }
+.tool-links { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--line); }
+.tool-links .tool-link { gap: 8px; min-height: 46px; margin: 0; padding: 11px 12px; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; }
+.tool-links .tool-link:first-child { color: var(--blue-dark); border-color: var(--blue); }
+.tool-links .tool-link:hover { border-color: var(--blue); }
+.tool-links .arrow { font-size: 18px; }
 
 .documents-section { padding-bottom: 92px; }
 .document-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }

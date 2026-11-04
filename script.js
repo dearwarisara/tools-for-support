@@ -111,12 +111,19 @@
     cards = [...document.querySelectorAll(".tool-card[data-tool-id]")];
   };
 
-  const getCardData = (card) => ({
-    id: card.dataset.toolId,
-    name: card.querySelector("h3")?.textContent.trim() || "เครื่องมือ",
-    href: card.querySelector(".tool-link")?.href || "#",
-    kind: "เครื่องมือ",
-  });
+  const getCardData = (card) => {
+    const links = [...card.querySelectorAll(".tool-link")].map((link) => ({
+      label: link.querySelector("span")?.textContent.trim() || "เปิดใช้งาน",
+      href: link.href,
+    }));
+    return {
+      id: card.dataset.toolId,
+      name: card.querySelector("h3")?.textContent.trim() || "เครื่องมือ",
+      href: links[0]?.href || "#",
+      kind: "เครื่องมือ",
+      links,
+    };
+  };
 
   const getAllItems = () => [
     ...cards.map(getCardData),
@@ -139,6 +146,16 @@
       </button>
     `;
   };
+
+  const shortcutActionsMarkup = (item) => `
+    <div class="shortcut-actions">
+      ${item.links.map((link) => `
+        <a class="shortcut-action" href="${escapeHTML(link.href)}" target="_blank" rel="noopener noreferrer" data-item-id="${escapeHTML(item.id)}" aria-label="${escapeHTML(link.label + " " + item.name)}">
+          ${escapeHTML(link.label)} <span aria-hidden="true">↗</span>
+        </a>
+      `).join("")}
+    </div>
+  `;
 
   const addFavoriteButtons = () => {
     cards.forEach((card) => {
@@ -164,6 +181,13 @@
     favoriteList.innerHTML = favorites.map((item) => `
       <div class="favorite-item">
         ${favoriteButtonMarkup(item)}
+        ${item.links?.length > 1 ? `
+        <div class="shortcut-group">
+          <span class="favorite-name">${escapeHTML(item.name)}</span>
+          <span class="favorite-kind">${item.kind}</span>
+          ${shortcutActionsMarkup(item)}
+        </div>
+        ` : `
         <a class="favorite-link" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer" data-item-id="${escapeHTML(item.id)}">
           <span class="favorite-copy">
             <span class="favorite-name">${escapeHTML(item.name)}</span>
@@ -171,6 +195,7 @@
           </span>
           <span class="frequent-arrow" aria-hidden="true">↗</span>
         </a>
+        `}
       </div>
     `).join("");
     favoriteEmpty.hidden = favorites.length > 0;
@@ -216,7 +241,16 @@
 
     recentList.innerHTML = recentItems
       .map(
-        (item, index) => `
+        (item, index) => item.links?.length > 1 ? `
+          <div class="frequent-item frequent-item-multi">
+            <span class="frequent-rank">0${index + 1}</span>
+            <div class="shortcut-group">
+              <span class="favorite-name">${escapeHTML(item.name)}</span>
+              <span class="frequent-count">${item.kind} • ${escapeHTML(openedAtFormat.format(item.lastUsed))}</span>
+              ${shortcutActionsMarkup(item)}
+            </div>
+          </div>
+        ` : `
           <a class="frequent-item" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer" data-item-id="${escapeHTML(item.id)}">
             <span class="frequent-rank">0${index + 1}</span>
             <span class="frequent-copy">
@@ -303,7 +337,7 @@
 
   const recordOpenedLink = (event) => {
     if (event.type === "auxclick" && event.button !== 1) return;
-    const link = event.target.closest("a.tool-link, a.document-link, a.frequent-item, a.favorite-link");
+    const link = event.target.closest("a.tool-link, a.document-link, a.frequent-item, a.favorite-link, a.shortcut-action");
     const itemId = link?.dataset.itemId
       || link?.dataset.documentId
       || link?.closest(".tool-card")?.dataset.toolId;
