@@ -1,24 +1,14 @@
 (() => {
-  const usageKey = "support-toolkit-usage";
   const customToolsKey = "support-toolkit-custom-tools";
   const favoritesKey = "support-toolkit-favorites";
   const searchInput = document.querySelector("#tool-search");
   const searchResult = document.querySelector("#search-result");
   const toolCount = document.querySelector("#tool-count");
   const toolGrid = document.querySelector(".tool-grid");
-  const recentList = document.querySelector("#recent-items");
-  const recentEmpty = document.querySelector("#recent-empty");
   const documentLinks = [...document.querySelectorAll(".document-link[data-document-id]")];
   const favoriteList = document.querySelector("#favorite-items");
   const favoriteEmpty = document.querySelector("#favorite-empty");
   const favoriteTitle = document.querySelector("#favorites-title");
-  const openedAtFormat = new Intl.DateTimeFormat("th-TH", {
-    day: "numeric",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-  const clearUsage = document.querySelector("#clear-usage");
   const addToolPanel = document.querySelector("#add-tool-panel");
   const openAddTool = document.querySelector("#open-add-tool");
   const closeAddTool = document.querySelector("#close-add-tool");
@@ -30,7 +20,6 @@
   const categoryInput = document.querySelector("#tool-category");
   const descriptionInput = document.querySelector("#tool-description");
   let cards = [...document.querySelectorAll(".tool-card[data-tool-id]")];
-  let memoryUsage = {};
   let memoryCustomTools = [];
   let favoriteIds = [];
 
@@ -41,24 +30,6 @@
     '"': "&quot;",
     "'": "&#039;",
   })[character]);
-
-  const readUsage = () => {
-    try {
-      const storedUsage = JSON.parse(localStorage.getItem(usageKey) || "{}");
-      return Object.keys(storedUsage).length > 0 ? storedUsage : memoryUsage;
-    } catch {
-      return memoryUsage;
-    }
-  };
-
-  const saveUsage = (usage) => {
-    memoryUsage = usage;
-    try {
-      localStorage.setItem(usageKey, JSON.stringify(usage));
-    } catch {
-      // The site still works when browser storage is unavailable.
-    }
-  };
 
   const readFavoriteIds = () => {
     try {
@@ -193,7 +164,7 @@
             <span class="favorite-name">${escapeHTML(item.name)}</span>
             <span class="favorite-kind">${item.kind}</span>
           </span>
-          <span class="frequent-arrow" aria-hidden="true">↗</span>
+          <span class="favorite-arrow" aria-hidden="true">↗</span>
         </a>
         `}
       </div>
@@ -230,49 +201,6 @@
       </a>
     </article>
   `;
-
-  const renderRecentItems = () => {
-    const usage = readUsage();
-    const recentItems = getAllItems()
-      .map((item) => ({ ...item, lastUsed: Number(usage[item.id]?.lastUsed) || 0 }))
-      .filter((item) => item.lastUsed > 0 && !Number.isNaN(new Date(item.lastUsed).getTime()))
-      .sort((a, b) => b.lastUsed - a.lastUsed)
-      .slice(0, 3);
-
-    recentList.innerHTML = recentItems
-      .map(
-        (item, index) => item.links?.length > 1 ? `
-          <div class="frequent-item frequent-item-multi">
-            <span class="frequent-rank">0${index + 1}</span>
-            <div class="shortcut-group">
-              <span class="favorite-name">${escapeHTML(item.name)}</span>
-              <span class="frequent-count">${item.kind} • ${escapeHTML(openedAtFormat.format(item.lastUsed))}</span>
-              ${shortcutActionsMarkup(item)}
-            </div>
-          </div>
-        ` : `
-          <a class="frequent-item" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer" data-item-id="${escapeHTML(item.id)}">
-            <span class="frequent-rank">0${index + 1}</span>
-            <span class="frequent-copy">
-              <span class="frequent-name">${escapeHTML(item.name)}</span>
-              <span class="frequent-count">${item.kind} • ${escapeHTML(openedAtFormat.format(item.lastUsed))}</span>
-            </span>
-            <span class="frequent-arrow" aria-hidden="true">↗</span>
-          </a>
-        `,
-      )
-      .join("");
-
-    recentEmpty.classList.toggle("is-hidden", recentItems.length > 0);
-  };
-
-  const recordUsage = (itemId) => {
-    const usage = readUsage();
-    const current = usage[itemId] || { count: 0, lastUsed: 0 };
-    usage[itemId] = { count: Number(current.count) + 1, lastUsed: Date.now() };
-    saveUsage(usage);
-    renderRecentItems();
-  };
 
   const filterTools = () => {
     const query = searchInput.value.trim().toLowerCase();
@@ -335,17 +263,6 @@
     }
   });
 
-  const recordOpenedLink = (event) => {
-    if (event.type === "auxclick" && event.button !== 1) return;
-    const link = event.target.closest("a.tool-link, a.document-link, a.frequent-item, a.favorite-link, a.shortcut-action");
-    const itemId = link?.dataset.itemId
-      || link?.dataset.documentId
-      || link?.closest(".tool-card")?.dataset.toolId;
-    if (itemId) recordUsage(itemId);
-  };
-  document.addEventListener("click", recordOpenedLink);
-  document.addEventListener("auxclick", recordOpenedLink);
-
   openAddTool?.addEventListener("click", () => {
     addToolPanel.hidden = false;
     nameInput.focus();
@@ -353,10 +270,6 @@
   closeAddTool.addEventListener("click", closeForm);
   cancelAddTool.addEventListener("click", closeForm);
   searchInput.addEventListener("input", filterTools);
-  clearUsage.addEventListener("click", () => {
-    saveUsage({});
-    renderRecentItems();
-  });
 
   addToolForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -394,9 +307,7 @@
     renderFavorites();
     closeForm();
     filterTools();
-    renderRecentItems();
   });
 
-  renderRecentItems();
   filterTools();
 })();

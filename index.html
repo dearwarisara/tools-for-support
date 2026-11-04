@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#172033" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <script src="theme.js?v=dark-theme-1"></script>
-    <link rel="stylesheet" href="styles.css?v=folio-actions-1" />
+    <link rel="stylesheet" href="styles.css?v=notepad-1" />
   </head>
 
   <body>
@@ -49,6 +49,23 @@
           </p>
         </section>
 
+        <section class="notepad-section" aria-labelledby="notepad-title">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker">จดไว้ให้จำง่าย</p>
+              <h2 id="notepad-title">Notepad</h2>
+              <p class="notepad-hint" id="notepad-hint">เพิ่มโน้ต เลือกสี และแก้ข้อความได้ · บันทึกอัตโนมัติในเบราว์เซอร์นี้</p>
+            </div>
+            <button class="add-note-button" id="add-note" type="button">+ เพิ่มโน้ต</button>
+          </div>
+          <div class="note-grid" id="note-items"></div>
+          <p class="note-empty" id="note-empty" hidden>ยังไม่มีโน้ต กด “เพิ่มโน้ต” เพื่อเริ่มจดได้เลย</p>
+          <div class="note-feedback" role="status">
+            <span id="note-status"></span>
+            <button class="undo-note-button" id="undo-note" type="button" hidden>เลิกทำ</button>
+          </div>
+        </section>
+
         <section class="favorites-section" aria-labelledby="favorites-title">
           <div class="section-heading compact-heading">
             <div>
@@ -59,20 +76,6 @@
           <div class="favorite-list" id="favorite-items" aria-live="polite"></div>
           <p class="favorite-empty" id="favorite-empty">
             กดดาวที่เครื่องมือหรือเอกสาร เพื่อเก็บไว้เปิดใช้งานที่นี่
-          </p>
-        </section>
-
-        <section class="frequent-section" aria-labelledby="recent-title">
-          <div class="section-heading compact-heading">
-            <div>
-              <p class="section-kicker">ประวัติการใช้งาน</p>
-              <h2 id="recent-title">เครื่องมือและเอกสารที่เปิดล่าสุด</h2>
-            </div>
-            <button class="clear-usage" id="clear-usage" type="button">ล้างประวัติ</button>
-          </div>
-          <div class="frequent-list" id="recent-items" aria-live="polite"></div>
-          <p class="frequent-empty" id="recent-empty">
-            เมื่อเปิดเครื่องมือหรือเอกสาร รายการที่เปิดล่าสุดจะแสดงที่นี่
           </p>
         </section>
 
@@ -460,6 +463,7 @@
         <p class="footer-note">อัปเดตล่าสุด: 14 เครื่องมือ • 2 เอกสาร</p>
       </footer>
     </div>
-    <script src="script.js?v=folio-actions-1" defer></script>
+    <script src="notepad.js?v=notepad-1" defer></script>
+    <script src="script.js?v=notepad-1" defer></script>
   </body>
 </html>
