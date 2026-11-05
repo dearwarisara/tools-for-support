@@ -8,10 +8,12 @@
   const hint = document.querySelector("#notepad-hint");
   const colors = [
     { id: "yellow", name: "เหลือง" },
-    { id: "pink", name: "ชมพู" },
-    { id: "blue", name: "ฟ้า" },
     { id: "green", name: "เขียว" },
+    { id: "pink", name: "ชมพู" },
     { id: "purple", name: "ม่วง" },
+    { id: "blue", name: "ฟ้า" },
+    { id: "gray", name: "เทา" },
+    { id: "charcoal", name: "เทาเข้ม" },
   ];
   const defaultNotes = [{
     id: "preview-link",
