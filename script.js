@@ -150,7 +150,7 @@
     const allItems = new Map(getAllItems().map((item) => [item.id, item]));
     const favorites = favoriteIds.map((id) => allItems.get(id)).filter(Boolean);
     favoriteList.innerHTML = favorites.map((item) => `
-      <div class="favorite-item">
+      <div class="favorite-item" data-item-id="${escapeHTML(item.id)}">
         ${favoriteButtonMarkup(item)}
         ${item.links?.length > 1 ? `
         <div class="shortcut-group">

@@ -422,6 +422,55 @@ a { color: inherit; }
 :root[data-theme="dark"] .tool-card-ticket .tool-icon { color: #a4c4f5; background: #243650; }
 :root[data-theme="dark"] .tool-card-custom .tool-icon { color: #b9c6db; background: #2b3546; }
 
+/* Stable colors follow each item into favorites and stay the same after search. */
+[data-tool-id="doc-to-web"], [data-item-id="doc-to-web"] { --card-hue: 220; }
+[data-tool-id="pdf-prep-studio"], [data-item-id="pdf-prep-studio"] { --card-hue: 25; }
+[data-tool-id="financial-highlight-updater"], [data-item-id="financial-highlight-updater"] { --card-hue: 145; }
+[data-tool-id="htc-journey"], [data-item-id="htc-journey"] { --card-hue: 185; }
+[data-tool-id="reflection-builder"], [data-item-id="reflection-builder"] { --card-hue: 280; }
+[data-tool-id="webcast-agenda"], [data-item-id="webcast-agenda"] { --card-hue: 245; }
+[data-tool-id="photopea"], [data-item-id="photopea"] { --card-hue: 95; }
+[data-tool-id="slackemoji"], [data-item-id="slackemoji"] { --card-hue: 330; }
+[data-tool-id="convert-case"], [data-item-id="convert-case"] { --card-hue: 165; }
+[data-tool-id="viewport"], [data-item-id="viewport"] { --card-hue: 200; }
+[data-tool-id="jarvis"], [data-item-id="jarvis"] { --card-hue: 260; }
+[data-tool-id="time-away"], [data-item-id="time-away"] { --card-hue: 10; }
+[data-tool-id="resource-guru"], [data-item-id="resource-guru"] { --card-hue: 45; }
+[data-tool-id="ticket-tracking"], [data-item-id="ticket-tracking"] { --card-hue: 305; }
+[data-tool-id="ticket-overwatch"], [data-item-id="ticket-overwatch"] { --card-hue: 355; }
+[data-item-id="document-support-account"] { --card-hue: 115; }
+[data-item-id="document-client-list"] { --card-hue: 65; }
+
+:is(.tool-card, .document-card, .favorite-item) {
+  --card-bg: hsl(var(--card-hue, 215) 65% 94%);
+  --card-edge: hsl(var(--card-hue, 215) 40% 78%);
+  --card-accent: hsl(var(--card-hue, 215) 55% 28%);
+  --card-icon-bg: hsl(var(--card-hue, 215) 60% 87%);
+  --muted: #526078;
+  --muted-light: #606d82;
+  background: var(--card-bg);
+  border-color: var(--card-edge);
+}
+.tool-card::after { background: var(--card-accent); }
+:is(.tool-card, .document-card) :is(.tool-icon, .document-icon) { color: var(--card-accent); background: var(--card-icon-bg); }
+.tool-tag { color: var(--card-accent); background: var(--card-icon-bg); }
+.tool-card .tool-link, .tool-card .tool-links { border-top-color: var(--card-edge); }
+.tool-card .tool-links .tool-link { border-top-color: var(--line); }
+.tool-card .tool-links > .tool-link:first-child { border-top-color: var(--blue); }
+.tool-card .favorite-button:not([aria-pressed="true"]), .document-card .favorite-button:not([aria-pressed="true"]) { color: var(--card-accent); border-color: var(--card-edge); }
+
+:root[data-theme="dark"] :is(.tool-card, .document-card, .favorite-item) {
+  --card-bg: hsl(var(--card-hue, 215) 24% 23%);
+  --card-edge: hsl(var(--card-hue, 215) 28% 42%);
+  --card-accent: hsl(var(--card-hue, 215) 70% 78%);
+  --card-icon-bg: hsl(var(--card-hue, 215) 28% 30%);
+  --muted: #d4deed;
+  --muted-light: #c1cee0;
+  background: var(--card-bg);
+  border-color: var(--card-edge);
+}
+:root[data-theme="dark"] :is(.tool-card, .document-card) :is(.tool-icon, .document-icon) { color: var(--card-accent); background: var(--card-icon-bg); }
+
 @media (min-width: 1100px) {
   .note-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
