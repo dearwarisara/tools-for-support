@@ -15,8 +15,8 @@
   ];
   const defaultNotes = [{
     id: "preview-link",
-    title: "เจ้าที่ต้องการ preview link",
-    body: "PTTEP > Private Link ทุกกรณีที่ทำได้\nBTS > Private Link ข่าวทุกครั้ง\nจระเข้ > Private Popup ทุกครั้ง",
+    title: "ลูกค้าที่ต้องการ preview link",
+    body: "PTTEP > Private Link ทุกกรณีที่ทำได้\nBTS > Private Link ข่าวทุกครั้ง\nJorakay > Private Popup ทุกครั้ง",
     color: "yellow",
   }];
   let deletedNote = null;
@@ -33,8 +33,10 @@
         return true;
       }).map((note) => ({
         id: note.id,
-        title: note.title,
-        body: note.body,
+        title: note.id === "preview-link" && note.title === "เจ้าที่ต้องการ preview link"
+          ? defaultNotes[0].title : note.title,
+        body: note.id === "preview-link" && note.body === "PTTEP > Private Link ทุกกรณีที่ทำได้\nBTS > Private Link ข่าวทุกครั้ง\nจระเข้ > Private Popup ทุกครั้ง"
+          ? defaultNotes[0].body : note.body,
         color: colors.some((color) => color.id === note.color) ? note.color : "yellow",
       }));
     }
@@ -171,5 +173,6 @@
   const fitAllBodies = () => grid.querySelectorAll(".note-body").forEach(fitBody);
   window.addEventListener("resize", fitAllBodies);
   document.fonts.ready.then(fitAllBodies);
+  saveNotes();
   renderNotes();
 })();
