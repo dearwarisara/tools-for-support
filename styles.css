@@ -165,18 +165,18 @@ a { color: inherit; }
 .note-card[data-color="gray"] { --note-bg: #e7e7e7; --note-edge: #969696; --note-ink: #303030; --note-muted: #606060; }
 .note-card[data-color="charcoal"] { --note-bg: #444444; --note-edge: #333333; --note-ink: #ffffff; --note-muted: #dddddd; }
 .note-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-.note-palette { display: flex; flex: 1; min-width: 0; max-width: 224px; overflow: hidden; border-radius: 7px; }
-.note-color { --swatch-ink: #172033; position: relative; display: grid; place-items: center; flex: 1; min-width: 0; height: 30px; padding: 0; color: var(--swatch-ink); background: var(--swatch); border: 0; border-radius: 0; cursor: pointer; }
-.note-color::after { content: "✓"; opacity: 0; font-size: 16px; font-weight: 700; }
+.note-palette { display: flex; flex-wrap: wrap; gap: 3px; min-width: 0; }
+.note-color { position: relative; display: grid; place-items: center; width: 28px; height: 28px; padding: 0; background: transparent; border: 2px solid transparent; border-radius: 50%; cursor: pointer; }
+.note-color::before { width: 17px; height: 17px; content: ""; background: var(--swatch); border: 1px solid rgba(0, 0, 0, .2); border-radius: 50%; }
 .note-color[data-note-color="yellow"] { --swatch: #e9c100; }
 .note-color[data-note-color="green"] { --swatch: #63b856; }
 .note-color[data-note-color="pink"] { --swatch: #e883c5; }
 .note-color[data-note-color="purple"] { --swatch: #ae7fdf; }
 .note-color[data-note-color="blue"] { --swatch: #53bfdc; }
 .note-color[data-note-color="gray"] { --swatch: #969696; }
-.note-color[data-note-color="charcoal"] { --swatch: #444444; --swatch-ink: #ffffff; }
-.note-color[aria-pressed="true"]::after { opacity: 1; }
-.note-color:focus-visible { outline: 2px solid var(--swatch-ink); outline-offset: -3px; }
+.note-color[data-note-color="charcoal"] { --swatch: #444444; }
+.note-color[aria-pressed="true"] { border-color: var(--note-ink); }
+.note-color:focus-visible { outline: 2px solid var(--note-ink); outline-offset: 3px; }
 .delete-note-button { width: 32px; height: 32px; flex: none; padding: 0; color: var(--note-muted); background: transparent; border: 0; border-radius: 8px; cursor: pointer; font-size: 26px; line-height: 1; }
 .delete-note-button:hover { color: var(--note-ink); background: rgba(0, 0, 0, .06); }
 .note-title, .note-body { display: block; width: 100%; padding: 6px 0; color: var(--note-ink); background: transparent; border: 0; border-radius: 4px; font: inherit; }
