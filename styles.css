@@ -349,7 +349,6 @@ a { color: inherit; }
 .patch-notice { margin: 0; padding: 5px 8px; color: #775008; background: #fff0c4; border: 1px solid #edd28a; border-radius: 7px; font-size: 11px; font-weight: 700; line-height: 1.5; text-align: center; }
 :root[data-theme="dark"] .patch-notice { color: #ffe3a3; background: #554321; border-color: #937238; }
 .tool-links .tool-link { gap: 8px; min-height: 46px; margin: 0; padding: 11px 12px; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; }
-.tool-links > .tool-link:first-child { color: var(--blue-dark); border-color: var(--blue); }
 .tool-links .tool-link:hover { border-color: var(--blue); }
 .tool-links .arrow { font-size: 18px; }
 
