@@ -304,9 +304,6 @@ a { color: inherit; }
 .tool-card-ticket::after { background: #4d75b9; }
 .tool-card-custom::after { background: #6b7d99; }
 .tool-card:hover { transform: translateY(-4px); box-shadow: 0 22px 55px rgba(47, 61, 95, 0.13); }
-.development-ribbon { position: absolute; inset: 0 0 auto; padding: 7px 16px; color: #775008; background: #fff0c4; border-bottom: 1px solid #edd28a; font-size: 12px; font-weight: 700; text-align: center; letter-spacing: .02em; }
-.tool-card-development .card-topline { margin-top: 24px; }
-:root[data-theme="dark"] .development-ribbon { color: #ffe3a3; background: #554321; border-color: #937238; }
 .card-topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .card-topline .tool-tag { margin-left: auto; }
 .tool-icon { display: grid; width: 56px; height: 56px; place-items: center; border-radius: 16px; }
