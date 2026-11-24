@@ -1,5 +1,6 @@
 (() => {
   const storageKey = "support-toolkit-notes";
+  const seededNotesKey = "support-toolkit-seeded-notes";
   const grid = document.querySelector("#note-items");
   const empty = document.querySelector("#note-empty");
   const addButton = document.querySelector("#add-note");
@@ -20,11 +21,21 @@
     title: "ลูกค้าที่ต้องการ preview link",
     body: "PTTEP > Private Link ทุกกรณีที่ทำได้\nBTS > Private Link ข่าวทุกครั้ง\nJorakay > Private Popup ทุกครั้ง",
     color: "yellow",
+  }, {
+    id: "beyond-fh-uat",
+    title: "BEYOND FH",
+    body: "ทำ UAT ทุกครั้ง",
+    color: "green",
   }];
   let deletedNote = null;
   let notes = defaultNotes;
+  let seededNoteIds = ["preview-link"];
 
   try {
+    const savedSeedIds = JSON.parse(localStorage.getItem(seededNotesKey) || "null");
+    if (Array.isArray(savedSeedIds)) {
+      seededNoteIds.push(...savedSeedIds.filter((id) => typeof id === "string"));
+    }
     const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
     if (Array.isArray(saved)) {
       const ids = new Set();
@@ -46,9 +57,17 @@
     // Start with the team note if storage is unavailable or invalid.
   }
 
+  defaultNotes.forEach((note, index) => {
+    if (!seededNoteIds.includes(note.id) && !notes.some((item) => item.id === note.id)) {
+      notes.splice(Math.min(index, notes.length), 0, { ...note });
+    }
+  });
+  seededNoteIds = [...new Set([...seededNoteIds, ...defaultNotes.map((note) => note.id)])];
+
   const saveNotes = () => {
     try {
       localStorage.setItem(storageKey, JSON.stringify(notes));
+      localStorage.setItem(seededNotesKey, JSON.stringify(seededNoteIds));
     } catch {
       hint.textContent = "เบราว์เซอร์นี้บันทึกไม่ได้ โน้ตที่แก้ไขจะอยู่เฉพาะระหว่างเปิดหน้านี้";
     }
