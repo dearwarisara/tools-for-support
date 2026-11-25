@@ -26,6 +26,11 @@
     title: "BEYOND FH",
     body: "ทำ UAT ทุกครั้ง",
     color: "green",
+  }, {
+    id: "blc-compress-factsheet-th",
+    title: "BLC",
+    body: "Compress Factsheet TH ทุกกรณี",
+    color: "pink",
   }];
   let deletedNote = null;
   let notes = defaultNotes;
