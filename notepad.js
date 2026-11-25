@@ -115,8 +115,8 @@
       remove.setAttribute("aria-label", `ลบโน้ต ${index + 1}`);
       toolbar.append(palette, remove);
 
-      const title = document.createElement("input");
-      title.type = "text";
+      const title = document.createElement("textarea");
+      title.rows = 1;
       title.className = "note-title";
       title.dataset.noteField = "title";
       title.maxLength = 120;
@@ -126,13 +126,14 @@
       const body = document.createElement("textarea");
       body.className = "note-body";
       body.dataset.noteField = "body";
-      body.rows = 4;
+      body.rows = 2;
       body.maxLength = 10000;
       body.value = note.body;
       body.placeholder = "จดข้อความที่อยากจำไว้ที่นี่...";
       body.setAttribute("aria-label", `ข้อความโน้ต ${index + 1}`);
       card.append(toolbar, title, body);
       grid.append(card);
+      fitBody(title);
       fitBody(body);
     });
     empty.hidden = notes.length > 0;
@@ -144,7 +145,7 @@
     const note = notes.find((item) => item.id === event.target.closest(".note-card").dataset.noteId);
     if (!note) return;
     note[field] = event.target.value;
-    if (field === "body") fitBody(event.target);
+    fitBody(event.target);
     saveNotes();
   });
 
@@ -196,7 +197,7 @@
     grid.children[index].querySelector(".note-title").focus();
   });
 
-  const fitAllBodies = () => grid.querySelectorAll(".note-body").forEach(fitBody);
+  const fitAllBodies = () => grid.querySelectorAll(".note-title, .note-body").forEach(fitBody);
   window.addEventListener("resize", fitAllBodies);
   document.fonts.ready.then(fitAllBodies);
   saveNotes();
